@@ -1,9 +1,18 @@
 package br.com.asas.sciuridae.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "fabricante")
 public class Fabricante {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_fabricante")
     private Integer codigo;
-    private String fabricante;
+
+    @Column(name = "nome_fabricante", unique = true, nullable = false)
+    private String nome;
 
     public Integer getCodigo() {
         return codigo;
@@ -13,11 +22,11 @@ public class Fabricante {
         this.codigo = codigo;
     }
 
-    public String getFabricante() {
-        return fabricante;
+    public String getNome() {
+        return nome;
     }
 
-    public void setFabricante(String fabricante) {
-        this.fabricante = fabricante;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

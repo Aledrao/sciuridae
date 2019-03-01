@@ -1,11 +1,19 @@
 package br.com.asas.sciuridae.model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "item")
 public class Item {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_item")
     public Long codigo;
     private Produto produto;
+
+    @Column(name = "quantidade")
     private Float quantidade;
     private BigDecimal valorUnitario;
     private BigDecimal valorTotal;
