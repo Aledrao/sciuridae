@@ -20,10 +20,14 @@ public class Carrinho {
     @Column(name = "total_itens", nullable = false)
     private Integer totalItens;
 
+    @ManyToOne
+    @JoinColumn(name = "cod_pessoa")
     private Pessoa responsavel;
 
     @Column(name = "valor_total", unique = true)
     private BigDecimal valorTotal;
+
+    @ManyToMany(mappedBy = "compartilhado")
     private List<Pessoa> compartilhado;
 
     @Temporal(TemporalType.TIMESTAMP)

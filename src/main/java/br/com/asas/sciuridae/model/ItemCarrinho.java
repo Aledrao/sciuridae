@@ -12,6 +12,8 @@ public class ItemCarrinho {
     @Column(name = "cod_item_carrinho")
     private Long codigo;
 
+    @ManyToOne
+    @JoinColumn(name = "cod_item")
     private Item item;
 
     @Column(name = "valor_minimo")

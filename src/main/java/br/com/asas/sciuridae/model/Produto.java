@@ -21,12 +21,23 @@ public class Produto {
     @Column(name = "quantidade", nullable = false)
     private double quantidade;
 
+    @ManyToOne
+    @JoinColumn(name = "cod_unidade_medida")
     private UnidadeMedida unidadeMedida;
 
     @Column(name = "valor")
     private BigDecimal valor;
+
+    @ManyToOne
+    @JoinColumn(name = "cod_fabricante")
     private Fabricante fabricante;
+
+    @ManyToOne
+    @JoinColumn(name = "cod_tipo_produto")
     private TipoProduto tipoProduto;// Ex: grãos, perfumaria, bebidas, matinais, frutas, legumes, xampu
+
+    @ManyToOne
+    @JoinColumn(name = "cod_departamento")
     private Departamento departamento;
 
     public Long getCodigo() {

@@ -2,6 +2,7 @@ package br.com.asas.sciuridae.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "item")
@@ -15,8 +16,15 @@ public class Item {
 
     @Column(name = "quantidade")
     private Float quantidade;
+
+    @Column(name = "valor_unitario")
     private BigDecimal valorUnitario;
+
+    @Column(name = "valor_total")
     private BigDecimal valorTotal;
+
+    @OneToMany(mappedBy = "item")
+    private List<ItemCarrinho> itensCarrinhos;
 
     public Long getCodigo() {
         return codigo;
@@ -56,5 +64,13 @@ public class Item {
 
     public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public List<ItemCarrinho> getItensCarrinhos() {
+        return itensCarrinhos;
+    }
+
+    public void setItensCarrinhos(List<ItemCarrinho> itensCarrinhos) {
+        this.itensCarrinhos = itensCarrinhos;
     }
 }

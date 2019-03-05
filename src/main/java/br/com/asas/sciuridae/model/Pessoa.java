@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "pessoa")
@@ -38,6 +39,13 @@ public class Pessoa {
     @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
     @Column(name = "time_data_cadastro")
     private LocalDateTime dataCadastro;
+
+    @OneToMany(mappedBy = "responsavel")
+    private List<Carrinho> carrinhos;
+
+    @ManyToMany
+    @JoinTable(name = "carrinho_compartilhado_pessoa")
+    private List<Carrinho> compartilham;
 
     public Long getCodigo() {
         return codigo;
@@ -93,5 +101,21 @@ public class Pessoa {
 
     public void setDataCadastro(LocalDateTime dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+
+    public List<Carrinho> getCarrinhos() {
+        return carrinhos;
+    }
+
+    public void setCarrinhos(List<Carrinho> carrinhos) {
+        this.carrinhos = carrinhos;
+    }
+
+    public List<Carrinho> getCompartilham() {
+        return compartilham;
+    }
+
+    public void setCompartilham(List<Carrinho> compartilham) {
+        this.compartilham = compartilham;
     }
 }
