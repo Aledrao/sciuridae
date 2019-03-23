@@ -12,6 +12,9 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_item")
     public Long codigo;
+
+    @ManyToOne
+    @JoinColumn(name = "cod_produto")
     private Produto produto;
 
     @Column(name = "quantidade")
