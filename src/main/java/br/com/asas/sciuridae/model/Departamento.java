@@ -1,8 +1,17 @@
 package br.com.asas.sciuridae.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "departamento")
 public class Departamento {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigo")
     private Integer codigo;
+
+    @Column(name = "nome_departamento", nullable = false, unique = true)
     private String departamento;
 
     public Integer getCodigo() {
