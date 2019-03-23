@@ -1,17 +1,38 @@
 package br.com.asas.sciuridae.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
+@Table(name = "carrinho")
 public class Carrinho {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_carrinho")
     private Long codigo;
     private List<ItemCarrinho> itens;
+
+    @Column(name = "total_itens", nullable = false)
     private Integer totalItens;
+
+    @ManyToOne
+    @JoinColumn(name = "cod_pessoa")
     private Pessoa responsavel;
+
+    @Column(name = "valor_total", unique = true)
     private BigDecimal valorTotal;
+
+    @ManyToMany(mappedBy = "compartilhado")
     private List<Pessoa> compartilhado;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+    @Column(name = "time_data_criacao")
     private LocalDateTime dataCriacao;
 
     public Long getCodigo() {
