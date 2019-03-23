@@ -1,7 +1,6 @@
 package br.com.asas.sciuridae.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "departamento")
@@ -9,14 +8,11 @@ public class Departamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_departamento")
+    @Column(name = "codigo")
     private Integer codigo;
 
     @Column(name = "nome_departamento", nullable = false, unique = true)
-    private String nome;
-
-    @OneToMany(mappedBy = "departamentos")
-    private List<Produto> produtos;
+    private String departamento;
 
     public Integer getCodigo() {
         return codigo;
@@ -26,19 +22,11 @@ public class Departamento {
         this.codigo = codigo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getDepartamento() {
+        return departamento;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 }
