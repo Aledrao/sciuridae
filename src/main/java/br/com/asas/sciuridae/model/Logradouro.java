@@ -30,6 +30,7 @@ public class Logradouro {
     private String cidade;
 
     @ManyToOne
+    @JoinColumn(name = "sigla_estado")
     private Estado estado;
 
     @Column(name = "cep_prefixo")

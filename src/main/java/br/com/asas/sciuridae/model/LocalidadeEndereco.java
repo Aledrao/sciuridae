@@ -10,12 +10,16 @@ public class LocalidadeEndereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_localidade_endereco")
     private Long codigo;
+
+    @ManyToOne()
+    @JoinColumn(name = "cod_localidade")
     private Localidade localidade;
 
     @Column(name = "sem_localidade")
     private String semLocalidade;
 
     @ManyToOne
+    @JoinColumn(name = "cod_logradouro")
     private Logradouro endereco;
 
     public Long getCodigo() {
